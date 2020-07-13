@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @book.memo %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@book.picture_url) if @book.picture.present? %>
+</p>
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= select_year(Date.today) %>
