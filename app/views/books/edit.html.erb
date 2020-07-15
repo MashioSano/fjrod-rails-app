@@ -2,5 +2,5 @@
 
 <%= render 'form', book: @book %>
 
-<%= link_to "#{t 'books.show_link'}", @book %> |
-<%= link_to "#{t 'books.back_link'}", books_path %>
+<%= link_to t('books.show_link'), @book %> |
+<%= link_to t('books.back_link'), books_path %>

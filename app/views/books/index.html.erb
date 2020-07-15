@@ -17,9 +17,9 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
-        <td><%= link_to "#{t 'books.show_link'}", book %></td>
-        <td><%= link_to "#{t 'books.edit_link'}", edit_book_path(book) %></td>
-        <td><%= link_to "#{t 'books.destroy_link'}", book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('books.show_link'), book %></td>
+        <td><%= link_to t('books.edit_link'), edit_book_path(book) %></td>
+        <td><%= link_to t('books.destroy_link'), book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to "#{t 'books.new_link'}", new_book_path %>
+<%= link_to t('books.new_link'), new_book_path %>
