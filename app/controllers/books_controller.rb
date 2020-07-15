@@ -2,7 +2,6 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
-
   def index
     @books = Book.all
   end
@@ -21,7 +20,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = 'Book was successfully created.'
+      flash[:notice] = t 'flash.create'
       redirect_to @book
     else
       render :new
@@ -30,7 +29,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      flash[:notice] = 'Book was successfully updated.'
+      flash[:notice] = t 'flash.update'
       redirect_to @book
     else
       render 'edit'
@@ -39,7 +38,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    flash[:notice] = 'Book was successfully deleted.'
+    flash[:notice] = t 'flash.destroy'
     redirect_to('/books')
   end
 
