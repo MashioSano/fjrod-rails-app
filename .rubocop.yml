@@ -2,3 +2,9 @@ inherit_from: .rubocop_todo.yml
 
 require:
   rubocop-rails
+
+Documentation:
+  Enabled: false
+
+Documentation:
+  Enabled: false

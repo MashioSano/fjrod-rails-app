@@ -18,7 +18,7 @@ module MyWebApps
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     Rails.application.config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     config.hosts << 'ja.lvh.me'
     config.hosts << 'en.lvh.me'
   end

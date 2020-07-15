@@ -1,5 +1,5 @@
 en:
   flash:
     create: "created"
-    update: "更新しました"
-    destroy: "削除しました"
+    update: "updated"
+    destroy: "deleted"
