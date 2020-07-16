@@ -24,4 +24,9 @@
 
 <br>
 
+<div class = "mb-3">
+  <%= paginate @books%>
+  <%= page_entries_info @books %>
+</div>
+
 <%= link_to t('books.new_link'), new_book_path %>
