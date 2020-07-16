@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Books</h1>
+<h1><%= t 'books.index.title' %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Memo</th>
-      <th>Picture</th>
+      <th><%= t 'books.title' %></th>
+      <th><%= t 'books.memo' %></th>
+      <th><%= t 'books.picture' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,9 +17,9 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('books.show_link'), book %></td>
+        <td><%= link_to t('books.edit_link'), edit_book_path(book) %></td>
+        <td><%= link_to t('books.destroy_link'), book, method: :delete, data: { confirm: t('books.js.confirm_message') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Book', new_book_path %>
+<%= link_to t('books.new_link'), new_book_path %>
