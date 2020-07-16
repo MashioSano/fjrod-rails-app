@@ -19,7 +19,7 @@
         <td><%= book.memo %></td>
         <td><%= link_to t('books.show_link'), book %></td>
         <td><%= link_to t('books.edit_link'), edit_book_path(book) %></td>
-        <td><%= link_to t('books.destroy_link'), book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('books.destroy_link'), book, method: :delete, data: { confirm: t('books.js.confirm_message') } %></td>
       </tr>
     <% end %>
   </tbody>
