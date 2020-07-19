@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'books#index'
-  devise_for :users
   resources :books
+  devise_for :users
+  resources :users, only: [:show]
 end
