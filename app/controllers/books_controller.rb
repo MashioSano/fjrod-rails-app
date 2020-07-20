@@ -3,7 +3,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   def index
-    @books = Book.page(params[:page]).per(5)
+    @books = Book.page(params[:page])
   end
 
   def show
