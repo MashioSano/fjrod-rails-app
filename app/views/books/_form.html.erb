@@ -10,21 +10,21 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :memo %>
-    <%= form.text_area :memo %>
+    <%= form.text_area :memo, class: "form-control", rows: 10 %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :picture %>
-    <%= form.file_field :picture %>
+    <%= form.file_field :picture, class:"form-control" %>
   </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+  <%= form.submit class: "btn btn-primary mr-3"%>
+  <%= link_to "#{t 'books.back_link'}", books_path, class:"btn btn-success"%>
 <% end %>
