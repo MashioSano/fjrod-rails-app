@@ -8,3 +8,6 @@ Documentation:
 
 Documentation:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false

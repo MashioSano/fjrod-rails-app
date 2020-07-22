@@ -1,0 +1,6 @@
+ja:
+  devise:
+    shared:
+      links:
+        edit: ユーザー情報の編集
+        sign_out: ログアウト
