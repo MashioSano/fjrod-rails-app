@@ -310,5 +310,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # API key
-  config.omniauth :github, Rails.application.credentials.github[:client_id], Rails.application.credentials.github[:client_sercret]
+  config.omniauth :github, Rails.application.credentials.github[:client_id], Rails.application.credentials.github[:client_sercret], scope: 'user'
 end
