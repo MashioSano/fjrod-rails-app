@@ -1,6 +1,9 @@
 <div class="user">
   <%= @user.email %>
   <%= @user.bio %>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image %>
+  <% end %>
 </div>
 <% if current_user == @user %>
   <%= link_to t("devise.shared.links.edit"),  edit_user_registration_path(@user), class:"mt-2 btn btn-success" %>
