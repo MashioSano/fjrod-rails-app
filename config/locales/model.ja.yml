@@ -12,6 +12,7 @@ ja:
           bio: 自己紹介
           address: 住所
           postal_code: 郵便番号
+          image: プロフィール画像
   attributes:
     created_at: 作成日
     updated_at: 更新日
