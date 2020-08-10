@@ -1,20 +1,32 @@
-<div class="user-profile mt-3">
+<div class="user-profile">
   <% if @user.image.attached? %>
     <%= image_tag @user.image, class: 'user-icon' %>
   <% end %>
 
-  <% unless current_user == @user %>
-    <% if @user.followed_by?(current_user) %>
-      <%= link_to "フォローを解除", user_relationships_path(@user.id), method: :delete %>
-    <% else %>
-      <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
-    <% end %>
-  <% end %>
   <div class="user-info">
-    <%= @user.email %>
-    <%= @user.bio %>
+    <div class='user-name'>
+      <%= @user.name %>
+    </div>
+    <div class='user-follow'>
+      <% unless current_user == @user %>
+        <% if @user.followed_by?(current_user) %>
+          <%= button_to t('users.unfollow'), user_relationships_path(@user.id), method: :delete, class: 'unfollow-btn'%>
+        <% else %>
+          <%= button_to t('users.follow'), user_relationships_path(@user.id), method: :post, class: 'follow-btn'%>
+        <% end %>
+      <% end %>
+      <div class='user-follow-info'>
+        <div class='follower-count'>
+          <%= @user.followers.count %> <%= t 'users.follower' %>
+        </div>
+        <div class='following-count'>
+          <%= @user.followings.count %> <%= t 'users.following' %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 <% if current_user == @user %>
-  <%= link_to t("devise.shared.links.edit"),  edit_user_registration_path(@user), class:"mt-2 btn btn-success" %>
+  <%= link_to t("devise.shared.links.edit"),  edit_user_registration_path(@user), class:"mt-4 btn btn-success" %>
 <% end %>
