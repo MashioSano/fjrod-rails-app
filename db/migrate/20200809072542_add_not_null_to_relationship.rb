@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddNotNullToRelationship < ActiveRecord::Migration[6.0]
   def up
     change_column :relationships, :following_id, :integer, null: false

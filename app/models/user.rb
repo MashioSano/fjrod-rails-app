@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :active_relationships, class_name: 'Relationship', foreign_key: :following_id, dependent: :destroy, inverse_of: :following
   has_many :followings, through: :active_relationships, source: :follower
 
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy, inverse_of: :followers
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: :follower_id, dependent: :destroy, inverse_of: :follower
   has_many :followers, through: :passive_relationships, source: :following
 
   validates :name, presence: true
@@ -26,5 +26,19 @@ class User < ApplicationRecord
 
   def self.create_unique_string
     SecureRandom.uuid
+  end
+
+  def follow(user)
+    follow = active_relationships.build(follower_id: user.id)
+    follow.save
+  end
+
+  def unfollow(user)
+    follow = active_relationships.find_by(follower_id: user.id)
+    follow.destroy
+  end
+
+  def followed_by?(user)
+    passive_relationships.find_by(following_id: user.id).present?
   end
 end
