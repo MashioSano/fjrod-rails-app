@@ -8,13 +8,15 @@
       <%= @user.name %>
     </div>
     <div class='user-follow'>
-      <% if (current_user != @user) && user_signed_in? %>
-        <% if @user.followed_by?(current_user) %>
-          <%= button_to t('users.unfollow'), user_relationships_path(@user.id), method: :delete, class: 'unfollow-btn'%>
-        <% else %>
-          <%= button_to t('users.follow'), user_relationships_path(@user.id), method: :post, class: 'follow-btn'%>
+      <div id='follow-btn-box'>
+        <% if (current_user != @user) && user_signed_in? %>
+          <% if @user.followed_by?(current_user) %>
+            <%= render 'users/unfollow' %>
+          <% else %>
+            <%= render 'users/follow' %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
       <div class='user-follow-info'>
         <div class='follower-count'>
           <%= link_to @user.followers.count,  user_followers_path(@user) %> <%= t 'users.follower' %>
