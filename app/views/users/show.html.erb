@@ -17,10 +17,10 @@
       <% end %>
       <div class='user-follow-info'>
         <div class='follower-count'>
-          <%= @user.followers.count %> <%= t 'users.follower' %>
+          <%= link_to @user.followers.count,  user_followers_path(@user) %> <%= t 'users.follower' %>
         </div>
         <div class='following-count'>
-          <%= @user.followings.count %> <%= t 'users.following' %>
+          <%= link_to @user.followings.count, user_followings_path(@user) %> <%= t 'users.following' %>
         </div>
       </div>
     </div>
