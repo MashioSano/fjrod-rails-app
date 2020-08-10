@@ -1,2 +1,6 @@
 フォローしているユーザー
 <%= render partial: "users/user", collection: @followings, as: 'user' %>
+<div class = "mt-3">
+  <%= paginate @followings%>
+  <%= page_entries_info @followings %>
+</div>

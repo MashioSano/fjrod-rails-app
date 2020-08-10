@@ -9,14 +9,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # create user
-1.upto 10 do |n|
+1.upto 20 do |n|
   user = User.create(name: "testuser-#{n}", email: "testuser-#{n}@example.com", uid: SecureRandom.uuid, password: 'password', password_confirmation: 'password')
   user.image.attach(io: File.open(Rails.root.join('db/seeds/images/user_default.jpeg')), filename: 'user_default.jpeg')
 end
 
 # create followings and followers
 user = User.first
-2.upto 10 do |n|
+2.upto 20 do |n|
   user.active_relationships.create(follower_id: n)
   user.passive_relationships.create(following_id: n)
 end
