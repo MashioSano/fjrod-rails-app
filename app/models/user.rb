@@ -29,6 +29,8 @@ class User < ApplicationRecord
   end
 
   def follow(user)
+    return if id == user.id
+
     follow = active_relationships.build(follower_id: user.id)
     follow.save
   end

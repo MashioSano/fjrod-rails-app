@@ -8,7 +8,7 @@
       <%= @user.name %>
     </div>
     <div class='user-follow'>
-      <% unless current_user == @user %>
+      <% if (current_user != @user) && user_signed_in? %>
         <% if @user.followed_by?(current_user) %>
           <%= button_to t('users.unfollow'), user_relationships_path(@user.id), method: :delete, class: 'unfollow-btn'%>
         <% else %>
