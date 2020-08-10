@@ -4,8 +4,13 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= f.email_field :email, class: "form-control" %>
   </div>
 
   <div class='form-group'>
@@ -45,10 +50,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
-  </div>
 
   <div class="actions">
     <%= f.submit t('.update'), class: "btn btn-primary w-100 mr-3 mb-3" %>
