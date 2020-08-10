@@ -8,5 +8,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 1.upto 10 do |n|
-  User.create(name: "testuser-#{n}", email: "testuser-#{n}@example.com", uid: SecureRandom.uuid, password: 'password', password_confirmation: 'password')
+  user = User.create(name: "testuser-#{n}", email: "testuser-#{n}@example.com", uid: SecureRandom.uuid, password: 'password', password_confirmation: 'password')
+  user.image.attach(io: File.open(Rails.root.join('db/seeds/images/user_default.jpeg')), filename: 'user_default.jpeg')
 end
