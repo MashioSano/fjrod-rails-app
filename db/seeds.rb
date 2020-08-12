@@ -20,3 +20,8 @@ user = User.first
   user.active_relationships.create(follower_id: n)
   user.passive_relationships.create(following_id: n)
 end
+
+1.upto 10 do |n|
+  user.books.create(title: "book-title-#{n}", memo: "book-memo-#{n}")
+  user.reports.create(title: "report-title-#{n}", body: "report-body-#{n}")
+end
