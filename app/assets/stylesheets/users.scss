@@ -2,6 +2,7 @@
   display:flex;
   flex-direction: row;
   justify-content: normal;
+  margin: 16px 0;
 }
 
 .user-icon{
@@ -12,4 +13,51 @@
 
 .user-info{
   text-align: left;
+  margin: 16px;
+}
+
+.user-name{
+  font-size: 18px;
+  font-weight: 600;
+  color: #252525;
+  margin-bottom: 8px;
+}
+
+.user-follow{
+  display:flex;
+  flex-direction: row;
+  justify-content: normal;
+}
+
+.user-follow-info{
+  display:flex;
+  flex-direction: row;
+  justify-content: normal;
+}
+
+
+.unfollow-btn{
+  padding: 0 8px;
+  background-color:#0099FF;
+  color: white;
+  border-radius: 5px;
+  border-style: hidden;
+  margin-right: 8px;
+}
+
+.follow-btn{
+  padding: 0 8px;
+  color:#0099FF;
+  border-radius: 5px;
+  border-color: #0099FF;
+  background-color: white;
+  margin-right: 8px;
+}
+
+.unfollow-btn:hover {
+  background-color: rgb(202, 32, 18);
+}
+
+.follower-count{
+  margin-right: 8px;
 }

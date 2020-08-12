@@ -1,0 +1,5 @@
+<%= render partial: "users/user", collection: @followers, as: 'user' %>
+<div class = "mb-3">
+  <%= paginate @followers%>
+  <%= page_entries_info @followers %>
+</div>
