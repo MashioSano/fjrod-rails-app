@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[show index]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     @reports = Report.all
