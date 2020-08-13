@@ -1,0 +1,8 @@
+<%= form_with(model: [commentable, comment], local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control", rows: 10 %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary mr-3"%>
+<% end %>

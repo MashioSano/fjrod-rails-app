@@ -1,3 +1,5 @@
 <%= @report.title %>
 <%= @report.body %>
 <%= link_to '削除', report_path(@report), method: :delete %>
+
+<%= link_to 'コメント一覧へ', report_comments_path(@report) %>
