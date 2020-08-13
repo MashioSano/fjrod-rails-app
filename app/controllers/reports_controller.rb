@@ -52,8 +52,6 @@ class ReportsController < ApplicationController
 
   def correct_user
     report = Report.find(params[:id])
-    unless current_user == report.user
-      redirect_to reports_path
-    end
+    redirect_to reports_path unless current_user == report.user
   end
 end

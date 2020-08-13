@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_commentable
   before_action :set_comment, only: %i[show edit update destroy]
@@ -8,9 +10,7 @@ class CommentsController < ApplicationController
     @comments = @commentable.comments
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @comment = @commentable.comments.new
@@ -26,9 +26,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @comment.update(comment_params)
@@ -44,8 +42,9 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def set_commentable
-    resource, id = request.path.split('/')[1,2]
+    resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
   end
 
@@ -58,8 +57,6 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    unless current_user == @comment.user
-      redirect_to [@commentable, @comment]
-    end
+    redirect_to [@commentable, @comment] unless current_user == @comment.user
   end
 end
