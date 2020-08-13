@@ -2,4 +2,4 @@
   <%= link_to comment.description, [@commentable, comment]%>
 <% end %>
 
-<%= link_to 'New Comment', [:new, @commentable, :comment], class: 'btn btn-primary' %>
+<%= link_to  t('action_link.new', model: Comment.model_name.human), [:new, @commentable, :comment], class: 'btn btn-primary' %>

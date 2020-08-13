@@ -208,3 +208,12 @@ ja:
     create: "作成しました"
     update: "更新しました"
     destroy: "削除しました"
+  action_link:
+    new: '%{model}を作成'
+    create: '%{model}を投稿'
+    index: '%{model}一覧'
+    show: '%{model}の詳細'
+    edit: '%{model}を編集'
+    update: '%{model}を更新'
+    destroy: '%{model}を削除'
+    
