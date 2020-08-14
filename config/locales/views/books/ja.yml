@@ -10,8 +10,5 @@ ja:
       title: 本一覧
     edit:
       title: 本の編集
-    form:
-      error_unit: 件
-      error_message: のエラーにより保存できません
     js:
       confirm_message: 本当によろしいですか？

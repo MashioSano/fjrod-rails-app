@@ -1,5 +1,6 @@
 <%= form_with(model: report, local: true) do |form| %>
-
+  <%= render 'layouts/error_messages', model: form.object %>
+  
   <div class="form-group">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control"%>

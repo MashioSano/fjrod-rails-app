@@ -1,14 +1,5 @@
 <%= form_with(model: book, local: true) do |form| %>
-  <% if book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(book.errors.count, t('books.form.error_unit'))%> <%= t 'books.form.error_message' %></h2>
-      <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/error_messages', model: form.object %>
 
   <div class="form-group">
     <%= form.label :title %>
