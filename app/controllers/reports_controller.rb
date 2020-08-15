@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
+  before_action :set_report, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[show index]
   before_action :correct_user, only: %i[edit update destroy]
 
@@ -8,17 +9,13 @@ class ReportsController < ApplicationController
     @reports = Report.all
   end
 
-  def show
-    @report = Report.find(params[:id])
-  end
+  def show; end
 
   def new
     @report = Report.new
   end
 
-  def edit
-    @report = Report.find(params[:id])
-  end
+  def edit; end
 
   def create
     @report = current_user.reports.build(report_params)
@@ -30,7 +27,6 @@ class ReportsController < ApplicationController
   end
 
   def update
-    @report = Report.find(params[:id])
     if @report.update(report_params)
       redirect_to @report
     else
@@ -39,12 +35,15 @@ class ReportsController < ApplicationController
   end
 
   def destroy
-    report = Report.find(params[:id])
-    report.destroy
+    @report.destroy
     redirect_to reports_path
   end
 
   private
+
+  def set_report
+    @report = Report.find(params[:id])
+  end
 
   def report_params
     params.require(:report).permit(:title, :body)
