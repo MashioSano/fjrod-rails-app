@@ -9,10 +9,7 @@ class BooksController < ApplicationController
     @books = Book.all.page(params[:page])
   end
 
-  def show
-    @book = Book.find_by(id: params[:id])
-    render action: 'index' if @book.nil?
-  end
+  def show; end
 
   def new
     @book = Book.new
@@ -58,7 +55,6 @@ class BooksController < ApplicationController
   end
 
   def correct_user
-    book = Book.find(params[:id])
-    redirect_to books_path unless current_user == book.user
+    redirect_to books_path unless current_user == @book.user
   end
 end
