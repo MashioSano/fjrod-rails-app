@@ -1,0 +1,5 @@
+<% @comments.each do |comment|%>
+  <%= link_to comment.description, [@commentable, comment]%>
+<% end %>
+
+<%= link_to  t('action_link.new', model: Comment.model_name.human), [:new, @commentable, :comment], class: 'btn btn-primary' %>

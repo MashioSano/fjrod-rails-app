@@ -2,14 +2,14 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[show index]
+  before_action :correct_user, only: %i[edit update destroy]
+
   def index
-    @books = Book.page(params[:page])
+    @books = Book.all.page(params[:page])
   end
 
-  def show
-    @book = Book.find_by(id: params[:id])
-    render action: 'index' if @book.nil?
-  end
+  def show; end
 
   def new
     @book = Book.new
@@ -18,7 +18,7 @@ class BooksController < ApplicationController
   def edit; end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.books.build(book_params)
     if @book.save
       flash[:notice] = t 'flash.create'
       redirect_to @book
@@ -52,5 +52,9 @@ class BooksController < ApplicationController
   # Only allow a list of trusted parameters through.
   def book_params
     params.require(:book).permit(:title, :memo, :picture)
+  end
+
+  def correct_user
+    redirect_to books_path unless current_user == @book.user
   end
 end

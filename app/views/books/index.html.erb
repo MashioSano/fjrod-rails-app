@@ -12,9 +12,9 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.memo %></td>
-        <td><%= link_to t('books.show_link'), book %></td>
-        <td><%= link_to t('books.edit_link'), edit_book_path(book) %></td>
-        <td><%= link_to t('books.destroy_link'), book, method: :delete, data: { confirm: t('books.js.confirm_message') } %></td>
+        <td><%= link_to t('action_link.show', model: Book.model_name.human), book %></td>
+        <td><%= link_to t('action_link.edit', model: Book.model_name.human) %></td>
+        <td><%= link_to t('action_link.destroy', model: Book.model_name.human), book, method: :delete, data: { confirm: t('books.js.confirm_message') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
   <%= page_entries_info @books %>
 </div>
 
-<%= link_to t('books.new_link'), new_book_path %>
+<%= link_to t('action_link.new', model: Book.model_name.human), new_book_path %>

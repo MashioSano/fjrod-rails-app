@@ -3,19 +3,12 @@ ja:
     memo: メモ
     title: タイトル
     picture: 写真
-    new_link: 新規作成
-    edit_link: 編集
-    show_link: 詳細
     back_link: 戻る
-    destroy_link: 削除
     new:
       title: 本の登録
     index: 
       title: 本一覧
     edit:
       title: 本の編集
-    form:
-      error_unit: 件
-      error_message: のエラーにより保存できません
     js:
       confirm_message: 本当によろしいですか？
