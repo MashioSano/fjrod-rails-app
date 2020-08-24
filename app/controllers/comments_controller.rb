@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.build(comment_params.merge(user_id: current_user.id))
     if @comment.save
+      flash[:notice] = t 'flash.create'
       redirect_to [@commentable, @comment]
     else
       render 'new'
@@ -29,6 +30,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
+      flash[:notice] = t 'flash.update'
       redirect_to [@commentable, @comment]
     else
       render 'edit'
@@ -37,6 +39,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
+    flash[:notice] = t 'flash.destroy'
     redirect_to [@commentable, :comments]
   end
 

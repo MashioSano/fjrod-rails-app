@@ -20,7 +20,7 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '作成しました'
   end
 
-  test 'edit book' do
+  test 'update book' do
     sign_in_as 'steave@example.com', 'password'
     visit "/reports/#{reports(:report1).id}/edit"
     fill_in 'タイトル', with: '2日目'

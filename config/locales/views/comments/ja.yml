@@ -1,0 +1,10 @@
+ja:
+  comments:
+    show:
+      title: コメント詳細
+    new:
+      title: コメントの登録
+    index: 
+      title: コメント一覧
+    edit:
+      title: コメントの編集

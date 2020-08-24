@@ -22,7 +22,7 @@ class BooksTest < ApplicationSystemTestCase
     assert_text '作成しました'
   end
 
-  test 'edit book' do
+  test 'update book' do
     sign_in_as 'steave@example.com', 'password'
     visit "/books/#{books(:softskills).id}/edit"
     fill_in 'タイトル', with: 'チェリー本'
