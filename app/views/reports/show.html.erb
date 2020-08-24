@@ -1,3 +1,4 @@
+<h1><%= t 'reports.show.title' %></h1>
 <%= @report.title %>
 <%= @report.body %>
 <%= link_to t('action_link.destroy', model: Report.model_name.human), report_path(@report), method: :delete %>

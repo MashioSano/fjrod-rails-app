@@ -3,7 +3,7 @@
 require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
-  test 'index books' do
+  test 'index book' do
     visit '/books'
     assert_text '本一覧'
   end
