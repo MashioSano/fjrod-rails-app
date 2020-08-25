@@ -43,3 +43,5 @@ yarn-debug.log*
 /public/uploads/*
 
 /config/credentials/
+
+/coverage
