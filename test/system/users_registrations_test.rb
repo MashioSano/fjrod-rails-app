@@ -1,4 +1,6 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class UsersRegistrationsTest < ApplicationSystemTestCase
   test 'create user' do
@@ -16,7 +18,6 @@ class UsersRegistrationsTest < ApplicationSystemTestCase
     visit '/users/edit'
     fill_in '名前', with: 'MorganStark'
     attach_file('db/seeds/images/user_default.jpeg') do
-      # find('#user_image').click
       find('input[type="file"]').click
     end
     click_button '更新'

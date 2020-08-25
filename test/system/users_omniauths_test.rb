@@ -1,4 +1,6 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class UsersOmniauthsTest < ApplicationSystemTestCase
   test 'user create by omniauth' do
