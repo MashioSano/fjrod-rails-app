@@ -15,8 +15,14 @@ class UsersRegistrationsTest < ApplicationSystemTestCase
     sign_in_as 'tony@example.com', 'password'
     visit '/users/edit'
     fill_in '名前', with: 'MorganStark'
+    attach_file('db/seeds/images/user_default.jpeg') do
+      # find('#user_image').click
+      find('input[type="file"]').click
+    end
     click_button '更新'
     assert_text 'アカウント情報を変更しました。'
+    visit "/users/#{users(:tony).id}"
+    find('img.user-icon')
   end
 
   test 'delete user' do

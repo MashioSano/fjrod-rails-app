@@ -18,8 +18,12 @@ class BooksTest < ApplicationSystemTestCase
     visit '/books/new'
     fill_in 'タイトル', with: 'パーフェクトRubyonRails'
     fill_in 'メモ', with: 'Rails6.0.1に対応'
+    attach_file('db/seeds/images/user_default.jpeg') do
+      find('input[type="file"]').click
+    end
     click_button '登録する'
     assert_text '作成しました'
+    find('img.book_picture')
   end
 
   test 'update book' do
