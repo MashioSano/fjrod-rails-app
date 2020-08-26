@@ -23,7 +23,7 @@ class UsersRegistrationsTest < ApplicationSystemTestCase
     click_button '更新'
     assert_text 'アカウント情報を変更しました。'
     visit "/users/#{users(:tony).id}"
-    find('img.user-icon')
+    assert_selector 'img', class: 'user-icon'
   end
 
   test 'delete user' do

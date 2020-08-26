@@ -23,7 +23,7 @@ class BooksTest < ApplicationSystemTestCase
     end
     click_button '登録する'
     assert_text '作成しました'
-    find('img.book_picture')
+    assert_selector 'img', class: 'book_picture'
   end
 
   test 'update book' do
