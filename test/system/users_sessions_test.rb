@@ -4,7 +4,8 @@ require 'application_system_test_case'
 
 class UsersSessionsTest < ApplicationSystemTestCase
   test 'create session' do
-    visit new_user_session_path
+    visit root_path
+    click_link 'ログイン'
     fill_in 'Eメール', with: 'tony@example.com'
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'

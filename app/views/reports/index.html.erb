@@ -2,3 +2,4 @@
 <% @reports.each do |report| %>
   <%= link_to report.title, report_path(report)  %>
 <% end %>
+<%= link_to t('action_link.new', model: Report.model_name.human), new_report_path, class: 'btn btn-primary' %>

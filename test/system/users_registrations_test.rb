@@ -4,7 +4,8 @@ require 'application_system_test_case'
 
 class UsersRegistrationsTest < ApplicationSystemTestCase
   test 'create user' do
-    visit '/users/sign_up'
+    visit root_path
+    click_link 'アカウント登録'
     fill_in '名前', with: 'PeterParker'
     fill_in 'Eメール', with: 'peter@example.com'
     fill_in 'パスワード', with: 'password'
@@ -15,7 +16,7 @@ class UsersRegistrationsTest < ApplicationSystemTestCase
 
   test 'update user' do
     sign_in_as 'tony@example.com', 'password'
-    visit '/users/edit'
+    click_link 'ユーザー情報の編集'
     fill_in '名前', with: 'MorganStark'
     attach_file('db/seeds/images/user_default.jpeg') do
       find('input[type="file"]').click
@@ -28,7 +29,7 @@ class UsersRegistrationsTest < ApplicationSystemTestCase
 
   test 'delete user' do
     sign_in_as 'tony@example.com', 'password'
-    visit '/users/edit'
+    visit edit_user_registration_path
     accept_confirm do
       click_button 'アカウント削除'
     end

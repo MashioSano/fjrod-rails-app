@@ -4,18 +4,22 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   test 'index book' do
-    visit '/books'
+    visit root_path
+    assert_text 'SOFTSKILLS'
     assert_text '本一覧'
   end
 
   test 'show book' do
-    visit "/books/#{books(:softskills).id}"
+    visit books_path
+    click_link '詳細'
     assert_text 'SOFTSKILLS'
+    assert_text '参考になった'
   end
 
   test 'create book' do
     sign_in_as 'steave@example.com', 'password'
-    visit '/books/new'
+    visit books_path
+    click_link '本を作成'
     fill_in 'タイトル', with: 'パーフェクトRubyonRails'
     fill_in 'メモ', with: 'Rails6.0.1に対応'
     attach_file('db/seeds/images/user_default.jpeg') do
@@ -28,7 +32,8 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'update book' do
     sign_in_as 'steave@example.com', 'password'
-    visit "/books/#{books(:softskills).id}/edit"
+    visit book_path(books(:softskills))
+    click_link '本を編集'
     fill_in 'タイトル', with: 'チェリー本'
     fill_in 'メモ', with: 'サンプルコードはダウンロードできます'
     click_button '更新する'
@@ -37,7 +42,7 @@ class BooksTest < ApplicationSystemTestCase
 
   test 'delete book' do
     sign_in_as 'steave@example.com', 'password'
-    visit '/books'
+    visit books_path
     accept_alert do
       click_link('本を削除')
     end

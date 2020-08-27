@@ -2,5 +2,5 @@
 <%= @report.title %>
 <%= @report.body %>
 <%= link_to t('action_link.destroy', model: Report.model_name.human), report_path(@report), method: :delete %>
-
+<%= link_to t('action_link.edit', model: Report.model_name.human), edit_report_path(@report) %>
 <%= link_to t('action_link.index', model: Comment.model_name.human), report_comments_path(@report) %>
