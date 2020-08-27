@@ -1,0 +1,10 @@
+ja:
+  reports:
+    show:
+      title: 日報詳細
+    new:
+      title: 日報の登録
+    index: 
+      title: 日報一覧
+    edit:
+      title: 日報の編集

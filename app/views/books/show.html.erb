@@ -8,10 +8,10 @@
   <%= @book.memo %>
 </p>
 
-<p>
+<% if @book.picture.present? %>
   <strong><%= t 'books.picture' %></strong>
-  <%= image_tag(@book.picture_url) if @book.picture.present? %>
-</p>
+  <%= image_tag(@book.picture_url, class: 'book_picture') %>
+<% end %>
 
 <%= link_to t('action_link.index', model: Comment.model_name.human), book_comments_path(@book) %>
 

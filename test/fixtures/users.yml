@@ -1,0 +1,11 @@
+tony:
+  name: TonyStark
+  email: tony@example.com
+  uid: 521fcdaa-0b7e-493a-a3f2-4b12be8f4e57
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+steave:
+  name: SteaveRogers
+  email: steave@example.com
+  uid: cb57058a-a531-4dcf-8f5c-422a688c4b80
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

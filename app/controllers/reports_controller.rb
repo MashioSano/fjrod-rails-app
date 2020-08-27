@@ -20,6 +20,7 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.build(report_params)
     if @report.save
+      flash[:notice] = t 'flash.create'
       redirect_to @report
     else
       render :new
@@ -28,6 +29,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
+      flash[:notice] = t 'flash.update'
       redirect_to @report
     else
       render 'edit'
@@ -36,6 +38,7 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
+    flash[:notice] = t 'flash.destroy'
     redirect_to reports_path
   end
 
