@@ -24,7 +24,6 @@ module MyWebApps
 
     config.generators do |g|
       g.test_framewroks :rspec,
-        fixtures: false,
         view_spec: false,
         helper_specs: false,
         routing_specs: false
