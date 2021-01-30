@@ -58,8 +58,8 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -67,10 +67,10 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'simplecov'
   gem 'webdrivers'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
