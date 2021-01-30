@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Reports", type: :system do
+RSpec.describe 'Reports', type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
   let!(:report) { FactoryBot.create(:report, user: tony) }
-  scenario "index reports" do
+  scenario 'index reports' do
     visit root_path
     click_link '日報一覧'
     assert_text '日報一覧'

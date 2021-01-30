@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   let!(:tony) { FactoryBot.create(:tony_stark) }
   scenario 'index users' do
     visit root_path

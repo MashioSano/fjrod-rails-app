@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Users Registrations", type: :system do
+RSpec.describe 'Users Registrations', type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
 
   scenario 'create user' do
@@ -10,7 +12,7 @@ RSpec.describe "Users Registrations", type: :system do
     fill_in 'Eメール', with: 'peter@example.com'
     fill_in 'パスワード', with: 'password'
     fill_in 'パスワード（確認用）', with: 'password'
-    expect { click_button 'アカウント登録' }.to change { User.count }.by(1) 
+    expect { click_button 'アカウント登録' }.to change { User.count }.by(1)
     assert_text 'アカウント登録が完了しました。'
   end
 
@@ -28,13 +30,13 @@ RSpec.describe "Users Registrations", type: :system do
   scenario 'delete user', js: true do
     login_user(tony.email, tony.password)
     visit edit_user_registration_path
-    expect {
+    expect do
       accept_confirm do
         click_button 'アカウント削除'
       end
       # 以下の行がないとダイアログのOKボタンを押した直後にUserのカウントを評価するので、User.coutnはh
       # 減ってないとエラーが出る assert_textをブロックに入れることで評価を遅らせる
       assert_text 'アカウントを削除しました。またのご利用をお待ちしております。'
-    }.to change { User.count }.by(1)
+    end.to change { User.count }.by(1)
   end
 end
