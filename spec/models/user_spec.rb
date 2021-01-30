@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
   describe 'omniauth認証によるユーザー登録' do
     context 'uidとproviderが同じ値のユーザーが存在しないとき' do
       it 'ユーザーが作成されること' do
-        auth = OmniAuth.config.add_mock(:github, info: { email: 'thor@example.com', nickname: 'thor' })
+        auth = OmniAuth.config.add_mock(:github, info: { email: 'thor@example.com', nickname: 'thor' }, uid: '987654')
         expect { User.from_omniauth(auth) }.to change(User, :count).by(1)
       end
     end
