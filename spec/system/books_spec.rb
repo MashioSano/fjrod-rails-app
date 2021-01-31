@@ -5,15 +5,15 @@ RSpec.describe "Books", type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
   scenario 'index book' do
     visit root_path
-    assert_text '本一覧'
-    assert_text '伝え方が9割'
+    expect(page).to have_text('本一覧')
+    expect(page).to have_text('伝え方が9割')
   end
 
   scenario 'show book' do
     visit books_path
     first('tbody tr').click_link '本の詳細'
-    assert_text '伝え方が9割'
-    assert_text 'なぜ、伝え方で結果が変わるのか?'
+    expect(page).to have_text('伝え方が9割')
+    expect(page).to have_text('なぜ、伝え方で結果が変わるのか?')
   end
 
   scenario 'create book' do
@@ -26,7 +26,7 @@ RSpec.describe "Books", type: :system do
       find('input[type="file"]').click
     end
     click_button '登録する'
-    assert_text '作成しました'
+    expect(page).to have_text('作成しました')
   end
 
   scenario 'update book' do
@@ -36,7 +36,7 @@ RSpec.describe "Books", type: :system do
     fill_in 'タイトル', with: 'これからはじめるVue.js'
     fill_in 'メモ', with: 'サンプルコードはダウンロードできます'
     click_button '更新する'
-    assert_text '更新しました'
+    expect(page).to have_text('更新しました')
   end
 
   scenario 'delete book', js: true do
@@ -46,7 +46,7 @@ RSpec.describe "Books", type: :system do
       accept_alert do
         first('tbody tr').click_link '本を削除'
       end
-      assert_text '削除しました'
+      expect(page).to have_text('削除しました')
     end.to change { tony.books.count }.by(-1)
   end
 end

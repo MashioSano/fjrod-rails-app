@@ -11,12 +11,12 @@ RSpec.describe 'Users Sessions', type: :system do
     fill_in 'Eメール', with: tony.email
     fill_in 'パスワード', with: tony.password
     click_button 'ログイン'
-    assert_text 'ログインしました'
+    expect(page).to have_text('ログインしました')
   end
 
   scenario 'delete session' do
     login_user(tony.email, tony.password)
     click_link 'ログアウト'
-    assert_text 'ログアウトしました'
+    expect(page).to have_text('ログアウトしました')
   end
 end

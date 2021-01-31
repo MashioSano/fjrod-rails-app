@@ -10,6 +10,6 @@ RSpec.describe 'Users Followers', type: :system do
     visit users_path
     click_link steave.name
     click_link '1フォロワー'
-    assert_text 'Tony Stark'
+    expect(page).to have_text('Tony Stark')
   end
 end

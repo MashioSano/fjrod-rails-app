@@ -25,9 +25,7 @@ RSpec.describe 'Comments', type: :system do
     visit report_comments_path(report)
     click_link 'コメントを作成'
     fill_in '説明文', with: 'LGTMです'
-    expect do
-      click_button '登録する'
-    end.to change { report.comments.count }.by(1)
+    expect { click_button '登録する' }.to change { report.comments.count }.by(1)
     expect(page).to have_text('作成しました')
   end
 
