@@ -37,6 +37,6 @@ RSpec.describe 'Users Registrations', type: :system do
       # 以下の行がないとダイアログのOKボタンを押した直後にUserのカウントを評価するので、User.coutnはh
       # 減ってないとエラーが出る assert_textをブロックに入れることで評価を遅らせる
       assert_text 'アカウントを削除しました。またのご利用をお待ちしております。'
-    end.to change { User.count }.by(1)
+    end.to change { User.count }.by(-1)
   end
 end
