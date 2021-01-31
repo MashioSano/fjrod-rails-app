@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Books", type: :system do
+RSpec.describe 'Books', type: :system do
   let!(:book) { FactoryBot.create(:book, user: tony) }
   let(:tony) { FactoryBot.create(:tony_stark) }
   scenario 'index book' do

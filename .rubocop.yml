@@ -24,5 +24,6 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - 'spec/models/*'
+    - 'spec/system/*'
 
 
