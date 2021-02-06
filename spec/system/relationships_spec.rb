@@ -4,23 +4,23 @@ require 'rails_helper'
 
 RSpec.describe 'Relationships', type: :system, js: true do
   let(:tony) { FactoryBot.create(:tony_stark) }
-  let(:steave) { FactoryBot.create(:steave_rogers) }
-  let!(:relationship) { Relationship.create(following: tony, follower: steave) }
+  let(:steve) { FactoryBot.create(:steve_rogers) }
+  let!(:relationship) { Relationship.create(following: tony, follower: steve) }
 
   scenario 'create relationship' do
-    login_user(steave.email, steave.password)
+    login_user(steve.email, steve.password)
     visit users_path
     click_link tony.name
     expect do
       click_button 'フォロー'
       expect(page).to have_css('.unfollow-btn')
-    end.to change { steave.active_relationships.count }.by(1)
+    end.to change { steve.active_relationships.count }.by(1)
   end
 
   scenario 'delete relationship' do
     login_user(tony.email, tony.password)
     visit users_path
-    click_link steave.name
+    click_link steve.name
     expect do
       click_button 'フォローを解除'
       expect(page).to have_css('.follow-btn')

@@ -5,22 +5,22 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'ユーザーフォロー' do
     let(:tony) { FactoryBot.create(:tony_stark) }
-    let(:steave) { FactoryBot.create(:steave_rogers) }
-    context 'SteaveがTonyをフォローしているとき' do
-      let!(:relationship) { Relationship.create(follower: tony, following: steave) }
+    let(:steve) { FactoryBot.create(:steve_rogers) }
+    context 'SteveがTonyをフォローしているとき' do
+      let!(:relationship) { Relationship.create(follower: tony, following: steve) }
       it 'フォローを解除できること' do
-        expect { steave.unfollow(tony) }.to change { steave.active_relationships.count }.by(-1)
+        expect { steve.unfollow(tony) }.to change { steve.active_relationships.count }.by(-1)
       end
       it '1回しかフォローできないこと' do
-        expect { steave.follow(tony) }.to change { steave.active_relationships.count }.by(0)
+        expect { steve.follow(tony) }.to change { steve.active_relationships.count }.by(0)
       end
       it 'followed_by?メソッドがtrueを返すこと' do
-        expect(tony.followed_by?(steave)).to be true
+        expect(tony.followed_by?(steve)).to be true
       end
     end
-    context 'TonyがSteaveをフォローしていないとき' do
+    context 'TonyがSteveをフォローしていないとき' do
       it 'フォローできること' do
-        expect { tony.follow(steave) }.to change { tony.active_relationships.count }.by(1)
+        expect { tony.follow(steve) }.to change { tony.active_relationships.count }.by(1)
       end
     end
   end

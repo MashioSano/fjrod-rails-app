@@ -9,8 +9,8 @@ FactoryBot.define do
     factory :tony_stark do
       name { 'Tony Stark' }
     end
-    factory :steave_rogers do
-      name { 'Steave Rogers' }
+    factory :steve_rogers do
+      name { 'Steve Rogers' }
     end
   end
 end
