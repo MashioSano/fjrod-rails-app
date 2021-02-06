@@ -25,5 +25,3 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/models/*'
     - 'spec/system/*'
-
-
