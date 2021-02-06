@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
         expect { steve.unfollow(tony) }.to change { steve.active_relationships.count }.by(-1)
       end
       it '1回しかフォローできないこと' do
-        expect { steve.follow(tony) }.to change { steve.active_relationships.count }.by(0)
+        expect { steve.follow(tony) }.to_not change { steve.active_relationships.count }
       end
       it 'followed_by?メソッドがtrueを返すこと' do
         expect(tony.followed_by?(steve)).to be true
@@ -34,9 +34,9 @@ RSpec.describe User, type: :model do
     end
 
     context 'uidとproviderが同じ値のユーザーがすでに存在するとき' do
-      let!(:authroized_user) { User.create(name: 'peter', email: 'peter@example.com', uid: '123456', provider: 'github', password: 'password', password_confirmation: 'password') }
+      let!(:authroized_user) { FactoryBot.create(:tony_stark, uid: '123456', provider: 'github') }
       it 'ユーザーが作成されないこと' do
-        expect { User.from_omniauth(auth) }.to change { User.count }.by(0)
+        expect { User.from_omniauth(auth) }.to_not change { User.count }
       end
     end
   end
