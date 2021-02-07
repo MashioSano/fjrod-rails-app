@@ -3,45 +3,49 @@
 require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system do
-  let(:tony) { FactoryBot.create(:tony_stark) }
+  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
   let!(:report) { FactoryBot.create(:report, user: tony) }
-  let!(:comment) { Comment.create(description: '良いと思います', user: tony, commentable: report) }
-  scenario 'index comments' do
+  let!(:comment) { report.comments.create!(description: '良いと思います', user: tony) }
+  scenario 'コメントの一覧を表示する' do
     visit report_path(report)
     click_link 'コメント一覧'
     expect(page).to have_text('コメント一覧')
     expect(page).to have_text('良いと思います')
   end
 
-  scenario 'show comment' do
+  scenario 'コメントの詳細を表示する' do
     visit report_comments_path(report)
-    click_link comment.description
+    click_link '良いと思います'
     expect(page).to have_text('コメント詳細')
     expect(page).to have_text('良いと思います')
   end
 
-  scenario 'create comment' do
-    login_user(tony.email, tony.password)
+  scenario 'コメントを作成する' do
+    login_user('tonystark@example.com', 'password')
     visit report_comments_path(report)
     click_link 'コメントを作成'
     fill_in '説明文', with: 'LGTMです'
-    expect { click_button '登録する' }.to change { report.comments.count }.by(1)
+    click_button '登録する'
     expect(page).to have_text('作成しました')
+    expect(page).to have_text('LGTMです')
   end
 
-  scenario 'update comment' do
-    login_user(tony.email, tony.password)
+  scenario 'コメントを編集する' do
+    login_user('tonystark@example.com', 'password')
     visit report_comment_path(report, comment)
     click_link 'コメントを編集'
-    fill_in '説明文', with: 'メンターの佐野です  よろしくお願いします'
+    fill_in '説明文', with: 'メンターの佐野です よろしくお願いします'
     click_button '更新する'
     expect(page).to have_text('更新しました')
+    expect(page).to have_text('メンターの佐野です よろしくお願いします')
   end
 
-  scenario 'delete comment' do
-    login_user(tony.email, tony.password)
+  scenario 'コメントを削除する' do
+    login_user('tonystark@example.com', 'password')
     visit report_comment_path(report, comment)
-    expect { click_link 'コメントを削除' }.to change { report.comments.count }.by(-1)
+    expect(page).to have_text('良いと思います')
+    click_link 'コメントを削除'
     expect(page).to have_text('削除しました')
+    expect(page).to_not have_text('良いと思います')
   end
 end
