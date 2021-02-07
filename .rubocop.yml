@@ -25,3 +25,8 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/models/*'
     - 'spec/system/*'
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/models/*'
+    - 'spec/system/*'
