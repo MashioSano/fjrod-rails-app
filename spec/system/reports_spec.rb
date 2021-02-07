@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Reports', type: :system do
-  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
+  let(:tony) { FactoryBot.create(:tony_stark, email: 'tony@example.com') }
   let!(:report) { FactoryBot.create(:report, user: tony, title: '初日報', body: '初めての日報です これから頑張ります') }
   example '日報の一覧を表示する' do
     visit root_path

@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Books', type: :system do
   let!(:book) { FactoryBot.create(:book, user: tony, title: '伝え方が9割', memo: 'なぜ、伝え方で結果が変わるのか?') }
-  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
+  let(:tony) { FactoryBot.create(:tony_stark, email: 'tony@example.com') }
   example '本の一覧を表示する' do
     visit root_path
     expect(page).to have_text('本一覧')

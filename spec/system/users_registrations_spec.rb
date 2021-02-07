@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users Registrations', type: :system do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
+  let!(:tony) { FactoryBot.create(:tony_stark, email: 'tony@example.com') }
 
   example 'アカウントを登録する' do
     visit root_path
