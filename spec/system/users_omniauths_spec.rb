@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users Omniauth', type: :system do
-  scenario 'user create by omniauth' do
+  example 'user create by omniauth' do
     visit root_path
     click_link 'ログイン'
     OmniAuth.config.add_mock(:github, info: { email: 'thor@example.com', nickname: 'Thor' })

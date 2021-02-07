@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Users Registrations', type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
 
-  scenario 'create user' do
+  example 'create user' do
     visit root_path
     click_link 'アカウント登録'
     fill_in '名前', with: 'PeterParker'
@@ -16,7 +16,7 @@ RSpec.describe 'Users Registrations', type: :system do
     expect(page).to have_text('アカウント登録が完了しました。')
   end
 
-  scenario 'update user' do
+  example 'update user' do
     login_user(tony.email, tony.password)
     visit edit_user_registration_path
     fill_in '名前', with: 'MorganStark'
@@ -27,7 +27,7 @@ RSpec.describe 'Users Registrations', type: :system do
     expect(page).to have_text('アカウント情報を変更しました。')
   end
 
-  scenario 'delete user', js: true do
+  example 'delete user', js: true do
     login_user(tony.email, tony.password)
     visit edit_user_registration_path
     expect do

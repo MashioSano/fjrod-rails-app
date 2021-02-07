@@ -6,21 +6,21 @@ RSpec.describe 'Comments', type: :system do
   let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
   let!(:report) { FactoryBot.create(:report, user: tony) }
   let!(:comment) { report.comments.create!(description: '良いと思います', user: tony) }
-  scenario 'コメントの一覧を表示する' do
+  example 'コメントの一覧を表示する' do
     visit report_path(report)
     click_link 'コメント一覧'
     expect(page).to have_text('コメント一覧')
     expect(page).to have_text('良いと思います')
   end
 
-  scenario 'コメントの詳細を表示する' do
+  example 'コメントの詳細を表示する' do
     visit report_comments_path(report)
     click_link '良いと思います'
     expect(page).to have_text('コメント詳細')
     expect(page).to have_text('良いと思います')
   end
 
-  scenario 'コメントを作成する' do
+  example 'コメントを作成する' do
     login_user('tonystark@example.com', 'password')
     visit report_comments_path(report)
     click_link 'コメントを作成'
@@ -30,7 +30,7 @@ RSpec.describe 'Comments', type: :system do
     expect(page).to have_text('LGTMです')
   end
 
-  scenario 'コメントを編集する' do
+  example 'コメントを編集する' do
     login_user('tonystark@example.com', 'password')
     visit report_comment_path(report, comment)
     click_link 'コメントを編集'
@@ -40,7 +40,7 @@ RSpec.describe 'Comments', type: :system do
     expect(page).to have_text('メンターの佐野です よろしくお願いします')
   end
 
-  scenario 'コメントを削除する' do
+  example 'コメントを削除する' do
     login_user('tonystark@example.com', 'password')
     visit report_comment_path(report, comment)
     expect(page).to have_text('良いと思います')

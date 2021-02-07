@@ -6,7 +6,7 @@ RSpec.describe 'Users Followers', type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
   let(:steve) { FactoryBot.create(:steve_rogers) }
   let!(:relationship) { Relationship.create(following: tony, follower: steve) }
-  scenario 'index follwers' do
+  example 'index follwers' do
     visit users_path
     click_link steve.name
     click_link '1フォロワー'

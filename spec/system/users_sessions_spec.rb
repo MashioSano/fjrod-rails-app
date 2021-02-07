@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Users Sessions', type: :system do
   let(:tony) { FactoryBot.create(:tony_stark) }
 
-  scenario 'create session' do
+  example 'create session' do
     visit root_path
     click_link 'ログイン'
     fill_in 'Eメール', with: tony.email
@@ -14,7 +14,7 @@ RSpec.describe 'Users Sessions', type: :system do
     expect(page).to have_text('ログインしました')
   end
 
-  scenario 'delete session' do
+  example 'delete session' do
     login_user(tony.email, tony.password)
     click_link 'ログアウト'
     expect(page).to have_text('ログアウトしました')
