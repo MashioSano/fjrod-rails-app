@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Books', type: :system do
   let!(:book) { FactoryBot.create(:book, user: tony, title: '伝え方が9割', memo: 'なぜ、伝え方で結果が変わるのか?') }
-  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
+  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
   example '本の一覧を表示する' do
     visit root_path
     expect(page).to have_text('本一覧')
@@ -19,7 +19,7 @@ RSpec.describe 'Books', type: :system do
   end
 
   example '本を登録する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit books_path
     click_link '本を作成'
     fill_in 'タイトル', with: 'パーフェクトRuby on Rails'
@@ -31,7 +31,7 @@ RSpec.describe 'Books', type: :system do
   end
 
   example '本を編集する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit book_path(book)
     click_link '本を編集'
     fill_in 'タイトル', with: 'これからはじめるVue.js'
@@ -42,7 +42,7 @@ RSpec.describe 'Books', type: :system do
   end
 
   example '本を削除する', js: true do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit books_path(book)
     expect(page).to have_text('伝え方が9割')
     accept_alert do

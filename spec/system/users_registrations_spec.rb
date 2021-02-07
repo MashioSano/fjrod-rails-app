@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users Registrations', type: :system do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
+  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
 
   example 'アカウントを登録する' do
     visit root_path
@@ -18,7 +18,7 @@ RSpec.describe 'Users Registrations', type: :system do
   end
 
   example 'ユーザー情報を更新する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit edit_user_registration_path
     fill_in '名前', with: 'Morgan Stark'
     attach_file('db/seeds/images/user_default.jpeg')
@@ -28,7 +28,7 @@ RSpec.describe 'Users Registrations', type: :system do
   end
 
   example 'アカウントを削除する', js: true do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit edit_user_registration_path
     accept_confirm do
       click_button 'アカウント削除'

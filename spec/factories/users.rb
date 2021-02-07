@@ -8,11 +8,11 @@ FactoryBot.define do
 
     factory :tony_stark do
       name { 'Tony Stark' }
-      email { 'tonystark@example.com' }
+      email { 'tony@example.com' }
     end
     factory :steve_rogers do
       name { 'Steve Rogers' }
-      email { 'steverogers@example.com' }
+      email { 'steve@example.com' }
     end
   end
 end

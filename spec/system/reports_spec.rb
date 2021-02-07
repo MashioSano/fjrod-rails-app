@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Reports', type: :system do
-  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
+  let(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
   let!(:report) { FactoryBot.create(:report, user: tony, title: '初日報', body: '初めての日報です これから頑張ります') }
   example '日報の一覧を表示する' do
     visit root_path
@@ -20,7 +20,7 @@ RSpec.describe 'Reports', type: :system do
   end
 
   example '日報を作成する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit reports_path
     click_link '日報を作成'
     fill_in 'タイトル', with: 'やる気が出ませんでした'
@@ -31,7 +31,7 @@ RSpec.describe 'Reports', type: :system do
   end
 
   example '日報を更新する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit report_path(report)
     click_link '日報を編集'
     fill_in 'タイトル', with: '初日ですがやめます'
@@ -42,7 +42,7 @@ RSpec.describe 'Reports', type: :system do
   end
 
   example '日報を削除する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit report_path(report)
     expect(page).to have_text('初日報')
     click_link '日報を削除'

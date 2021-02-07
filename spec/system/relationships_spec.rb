@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Relationships', type: :system, js: true do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
-  let!(:steve) { FactoryBot.create(:steve_rogers, name: 'Steve Rogers', email: 'steverogers@example.com') }
+  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
+  let!(:steve) { FactoryBot.create(:steve_rogers, name: 'Steve Rogers', email: 'steve@example.com') }
   let!(:relationship) { Relationship.create!(following: tony, follower: steve) }
 
   example 'フォローする' do
-    login_user('steverogers@example.com', 'password')
+    login_user('steve@example.com', 'password')
     visit users_path
     click_link 'Tony Stark'
     expect do
@@ -18,7 +18,7 @@ RSpec.describe 'Relationships', type: :system, js: true do
   end
 
   example 'フォローをはずす' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit users_path
     click_link 'Steve Rogers'
     expect do

@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Comments', type: :system do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tonystark@example.com') }
+  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
   let!(:report) { FactoryBot.create(:report, user: tony) }
   let!(:comment) { report.comments.create!(description: '良いと思います', user: tony) }
   example 'コメントの一覧を表示する' do
@@ -21,7 +21,7 @@ RSpec.describe 'Comments', type: :system do
   end
 
   example 'コメントを作成する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit report_comments_path(report)
     click_link 'コメントを作成'
     fill_in '説明文', with: 'LGTMです'
@@ -31,7 +31,7 @@ RSpec.describe 'Comments', type: :system do
   end
 
   example 'コメントを編集する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit report_comment_path(report, comment)
     click_link 'コメントを編集'
     fill_in '説明文', with: 'メンターの佐野です よろしくお願いします'
@@ -41,7 +41,7 @@ RSpec.describe 'Comments', type: :system do
   end
 
   example 'コメントを削除する' do
-    login_user('tonystark@example.com', 'password')
+    login_user('tony@example.com', 'password')
     visit report_comment_path(report, comment)
     expect(page).to have_text('良いと思います')
     click_link 'コメントを削除'
