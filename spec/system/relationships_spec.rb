@@ -7,7 +7,7 @@ RSpec.describe 'Relationships', type: :system, js: true do
   let!(:steve) { FactoryBot.create(:steve_rogers, name: 'Steve Rogers', email: 'steverogers@example.com') }
   let!(:relationship) { Relationship.create!(following: tony, follower: steve) }
 
-  example 'create relationship' do
+  example 'フォローする' do
     login_user('steverogers@example.com', 'password')
     visit users_path
     click_link 'Tony Stark'
@@ -17,7 +17,7 @@ RSpec.describe 'Relationships', type: :system, js: true do
     end.to change { steve.active_relationships.count }.by(1)
   end
 
-  example 'delete relationship' do
+  example 'フォローをはずす' do
     login_user('tonystark@example.com', 'password')
     visit users_path
     click_link 'Steve Rogers'
