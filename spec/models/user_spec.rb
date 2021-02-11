@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     let(:tony) { FactoryBot.create(:tony_stark) }
     let(:steve) { FactoryBot.create(:steve_rogers) }
     context 'SteveがTonyをフォローしているとき' do
-      let!(:relationship) { Relationship.create(follower: tony, following: steve) }
+      let!(:relationship) { Relationship.create!(follower: tony, following: steve) }
       it 'フォローを解除できること' do
         expect { steve.unfollow(tony) }.to change { steve.active_relationships.count }.by(-1)
       end
