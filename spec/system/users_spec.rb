@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark') }
+  let!(:tony) { FactoryBot.create(:user, name: 'Tony Stark') }
   example 'ユーザーの一覧を表示する' do
     visit root_path
     click_link 'ユーザー一覧'

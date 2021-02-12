@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Relationships', type: :system, js: true do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
-  let!(:steve) { FactoryBot.create(:steve_rogers, name: 'Steve Rogers', email: 'steve@example.com') }
+  let!(:tony) { FactoryBot.create(:user, name: 'Tony Stark', email: 'tony@example.com') }
+  let!(:steve) { FactoryBot.create(:user, name: 'Steve Rogers', email: 'steve@example.com') }
   let!(:relationship) { Relationship.create!(following: tony, follower: steve) }
 
   example 'フォローする' do

@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'ユーザーフォロー' do
-    let(:tony) { FactoryBot.create(:tony_stark) }
-    let(:steve) { FactoryBot.create(:steve_rogers) }
+    let(:tony) { FactoryBot.create(:user) }
+    let(:steve) { FactoryBot.create(:user) }
     context 'SteveがTonyをフォローしているとき' do
       let!(:relationship) { Relationship.create!(follower: tony, following: steve) }
       it 'フォローを解除できること' do
@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'uidとproviderが同じ値のユーザーがすでに存在するとき' do
-      let!(:authroized_user) { FactoryBot.create(:tony_stark, uid: '123456', provider: 'github') }
+      let!(:authroized_user) { FactoryBot.create(:user, uid: '123456', provider: 'github') }
       it 'ユーザーが作成されないこと' do
         expect { User.from_omniauth(auth) }.to_not change { User.count }
       end

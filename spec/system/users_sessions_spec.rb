@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users Sessions', type: :system do
-  let!(:tony) { FactoryBot.create(:tony_stark, name: 'Tony Stark', email: 'tony@example.com') }
+  let!(:tony) { FactoryBot.create(:user, name: 'Tony Stark', email: 'tony@example.com') }
 
   example 'ログインする' do
     visit root_path
