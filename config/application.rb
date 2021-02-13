@@ -21,5 +21,12 @@ module MyWebApps
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     config.hosts << 'ja.lvh.me'
     config.hosts << 'en.lvh.me'
+
+    config.generators do |g|
+      g.test_framewroks :rspec,
+                        view_spec: false,
+                        helper_specs: false,
+                        routing_specs: false
+    end
   end
 end

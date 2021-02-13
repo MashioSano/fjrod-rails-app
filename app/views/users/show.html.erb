@@ -1,3 +1,4 @@
+<h1><%= t('action_link.show', model: User.model_name.human) %></h1>
 <div class="user-profile">
   <% if @user.image.attached? %>
     <%= image_tag @user.image, class: 'user-icon' %>
